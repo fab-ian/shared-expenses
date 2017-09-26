@@ -15,10 +15,10 @@ export default class Header extends Component {
               <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="">Link</a>
+              <a className="nav-link" href='/signin'>Sign in</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href='/signin'>Sign in</a>
+              <a className="nav-link" href='/signup'>Sign up</a>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>

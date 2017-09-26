@@ -3,6 +3,7 @@ import { Router, Route } from 'react-router'
 import history from '../history'
 import Header from './header'
 import Signin from './auth/signin'
+import Signup from './auth/signup'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
               <div>
                 <Route exact path = "/" render={ () => <p> Landing page </p>} />
                 <Route path="/signin" component={Signin} />
+                <Route path="/signup" component={Signup} />
               </div>
             </Router>
           </div>
