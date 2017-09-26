@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
   render(){
@@ -19,7 +18,7 @@ export default class Header extends Component {
               <a className="nav-link" href="">Link</a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to='/signin'>Sign in</Link>
+              <a className="nav-link" href='/signin'>Sign in</a>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>

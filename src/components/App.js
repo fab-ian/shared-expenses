@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router'
+import { Router, Route } from 'react-router'
+import history from '../history'
 import Header from './header'
 import Signin from './auth/signin'
 
@@ -11,8 +12,12 @@ class App extends Component {
 
         <div className="container">
           <div className="starter-template">
-            <Route exact path = "/" render={ () => <p> Landing page </p>} />
-            <Route path="/signin" component={Signin} />
+            <Router history={history} >
+              <div>
+                <Route exact path = "/" render={ () => <p> Landing page </p>} />
+                <Route path="/signin" component={Signin} />
+              </div>
+            </Router>
           </div>
         </div>
       </div>
