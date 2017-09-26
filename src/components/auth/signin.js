@@ -28,8 +28,7 @@ class Signin extends Component {
         <form onSubmit={ handleSubmit(this.submitFormValues) } >
           <div className="form-group">
             <label htmlFor="email">Email address</label>
-            <Field component="input" name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
-            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+            <Field component="input" name="email" type="email" className="form-control" id="email" placeholder="Enter email" />
           </div>
 
           <div className="form-group">
