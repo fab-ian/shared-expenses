@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
 
-
 class Signin extends Component {
   submitFormValues = (values) => {
     this.props.signinUser(values)
