@@ -10,7 +10,7 @@ export function signinUser({ email, password }){
         dispatch({ type: AUTH_USER })
 
         localStorage.setItem('token', response.data.auth_token)
-        history.push('/')
+        history.push('/items')
       })
       .catch((error) => {
         dispatch(authError(error.response.data.message));
@@ -25,7 +25,7 @@ export function signupUser({ email, password, name }){
         dispatch({ type: AUTH_USER })
 
         localStorage.setItem('token', response.data.auth_token)
-        history.push('/')
+        history.push('/items')
       })
       .catch((error) => {
         dispatch(authError(error.response.data.message));

@@ -4,6 +4,7 @@ import history from '../history'
 import Header from './header'
 import Signin from './auth/signin'
 import Signup from './auth/signup'
+import Items from './items'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
                 <Route exact path = "/" render={ () => <p> Landing page </p>} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/signup" component={Signup} />
+                <Route path='/items' component={Items} />
               </div>
             </Router>
           </div>
