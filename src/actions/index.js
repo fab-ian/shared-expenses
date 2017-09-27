@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AUTH_USER, AUTH_ERROR } from './types'
+import { AUTH_USER, AUTH_ERROR, AUTH_OUT } from './types'
 import { API_URL } from '../settings'
 import history from '../history'
 
@@ -10,7 +10,7 @@ export function signinUser({ email, password }){
         dispatch({ type: AUTH_USER })
 
         localStorage.setItem('token', response.data.auth_token)
-        history.push('/')
+        history.push('/items')
       })
       .catch((error) => {
         dispatch(authError(error.response.data.message));
@@ -25,12 +25,21 @@ export function signupUser({ email, password, name }){
         dispatch({ type: AUTH_USER })
 
         localStorage.setItem('token', response.data.auth_token)
-        history.push('/')
+        history.push('/items')
       })
       .catch((error) => {
         dispatch(authError(error.response.data.message));
       })
   }
+}
+
+export function signoutUser(){
+  return function(dispatch){
+    localStorage.removeItem('token')
+
+    dispatch({ type: AUTH_OUT })
+  }
+
 }
 
 export function authError(error){
