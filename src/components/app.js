@@ -6,7 +6,7 @@ import Signin from './auth/signin'
 import Signup from './auth/signup'
 import Signout from './auth/signout'
 import requireAuth from './auth/require_auth'
-import Items from './items'
+import Items from './items/'
 import Welcome from './welcome'
 
 class App extends Component {
