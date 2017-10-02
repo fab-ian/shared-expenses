@@ -8,14 +8,14 @@ import Signout from './auth/signout'
 import requireAuth from './auth/require_auth'
 import Items from './items/'
 import Welcome from './welcome'
+import { Container } from 'reactstrap'
 
 class App extends Component {
   render() {
     return (
       <div>
         <Header />
-
-        <div className="container">
+        <Container >
           <div className="starter-template">
             <Router history={history} >
               <div>
@@ -27,7 +27,7 @@ class App extends Component {
               </div>
             </Router>
           </div>
-        </div>
+        </Container>
       </div>
     );
   }

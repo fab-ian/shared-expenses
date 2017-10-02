@@ -10,6 +10,7 @@ import App from './components/app';
 import { AUTH_USER } from './actions/types'
 
 import registerServiceWorker from './registerServiceWorker';
+import 'bootstrap/dist/css/bootstrap.css'
 import './css/index.css'
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore)
