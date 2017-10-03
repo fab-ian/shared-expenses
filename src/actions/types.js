@@ -3,3 +3,4 @@ export const AUTH_ERROR = 'auth_error'
 export const AUTH_OUT = 'aut_out'
 
 export const ITEMS_TABLE = 'items_table'
+export const ITEM_ADD = 'item_add'
