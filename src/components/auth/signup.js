@@ -18,12 +18,11 @@ class Signup extends Component {
     }
   }
 
-
   renderField({ label, type, meta: { error, touched }, ...field }){
     return(
       <div className="form-group">
-        <label htmlFor="email">{label}</label>
-        <input { ...field.input } type={type} className="form-control" />
+        <label htmlFor={ field.input.name }>{label}</label>
+        <input { ...field.input } type={type} className="form-control" id={ field.input.name } />
         { touched && error && <small className="form-text text-muted">{error}</small> }
       </div>
     )
@@ -66,7 +65,7 @@ function validate(formProps){
   }
 
   if(!formProps.password_confirm){
-    errors.password_confirm = 'Pleas confirm password'
+    errors.password_confirm = 'Please confirm password'
   }
 
   if(formProps.password !== formProps.password_confirm){
