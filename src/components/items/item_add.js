@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/items'
 
 class ItemAdd extends Component {
   constructor(props) {
@@ -11,29 +14,59 @@ class ItemAdd extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
+  saveItem = (values) => {
+    this.props.item_add(values)
+    this.toggle()
+  }
+
   toggle() {
     this.setState({
       modal: !this.state.modal
     });
   }
 
+  addInputField({label, type, meta: { error, touched }, ...fields}){
+    return(
+      <div className="form-group">
+        <label>{label}</label>
+        <input {...fields.input } className="form-control" />
+      </div>
+    )
+  }
+
+  addTextAreaField({label, type, meta: {error, touched}, ...fields}){
+    return(
+      <div className="form-group">
+        <label>{label}</label>
+        <textarea {...fields.input } className="form-control" />
+      </div>
+    )
+  }
+
   render() {
+    const { handleSubmit } = this.props
+
     return (
       <div className="d-inline">
         <Button color="primary" onClick={this.toggle} className="ml-1 btn-sm">{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-          <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
+          <form onSubmit={ handleSubmit(this.saveItem) }>
+            <ModalBody>
+                <Field component={this.addInputField} name="name" type="text" label="Name" />
+                <Field component={this.addTextAreaField} name="description" type="text" label="Description" />
+            </ModalBody>
+            <ModalFooter>
+              <Button type="submit" color="primary">Save</Button>{' '}
+              <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            </ModalFooter>
+          </form>
         </Modal>
       </div>
     );
   }
 }
 
-export default ItemAdd
+const ItemAddForm = reduxForm({form: 'item_add'})(ItemAdd)
+
+export default connect(null, actions)(ItemAddForm)
