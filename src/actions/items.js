@@ -4,7 +4,7 @@ import { ITEMS_TABLE, ITEM_ADD } from './types'
 
 export function items_table(){
   return function(dispatch){
-    axios.get(`${API_URL}/users/1/items`, {
+    axios.get(`${API_URL}/users/items`, {
        headers:{authorization: localStorage.getItem('token')}
     })
     .then( response => {
@@ -18,7 +18,7 @@ export function items_table(){
 
 export function item_add(options){
   return function(dispatch){
-    axios.post(`${API_URL}/users/1/items`, { name: options.name, description: options.description }, {
+    axios.post(`${API_URL}/users/items`, { name: options.name, description: options.description }, {
       headers:{authorization: localStorage.getItem('token')}
     })
     .then(response => {
