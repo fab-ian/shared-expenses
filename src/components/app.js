@@ -7,6 +7,7 @@ import Signup from './auth/signup'
 import Signout from './auth/signout'
 import requireAuth from './auth/require_auth'
 import Items from './items/'
+import Item from './items/item'
 import Welcome from './welcome'
 import { Container } from 'reactstrap'
 
@@ -23,7 +24,8 @@ class App extends Component {
                 <Route path="/signin" component={Signin} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/signout" component={Signout} />
-                <Route path='/items' component={requireAuth(Items)} />
+                <Route exact path='/items' component={requireAuth(Items)} />
+                <Route path='/items/:id' component={requireAuth(Item)} />
               </div>
             </Router>
           </div>

@@ -1,6 +1,6 @@
 import { API_URL } from '../settings'
 import axios from 'axios'
-import { ITEMS_TABLE, ITEM_ADD } from './types'
+import { ITEMS_TABLE, ITEM_ADD, ITEM_GET } from './types'
 
 export function items_table(){
   return function(dispatch){
@@ -26,6 +26,20 @@ export function item_add(options){
         type: ITEM_ADD,
         payload: response.data
       })
+    })
+  }
+}
+
+export function getItem(id) {
+  return function(dispatch){
+    axios.get(`${API_URL}/items/${id}`, { headers:{authorization: localStorage.getItem('token')}})
+    .then(response => {
+      dispatch(
+        {
+          type: ITEM_GET,
+          payload: response.data
+        }
+      )
     })
   }
 }
