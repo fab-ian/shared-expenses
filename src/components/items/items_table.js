@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import * as items_actions from '../../actions/items'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class ItemTable extends Component {
   componentWillMount(){
@@ -14,7 +15,9 @@ class ItemTable extends Component {
       tr = this.props.items_content.map(item => (
       <tr key={item.id}>
         <th scope="row">{item.id}</th>
-        <td>{item.name}</td>
+        <td>
+          <Link to={ {pathname: `/items/${item.id}`} }>{item.name}</Link>          
+        </td>
         <td>{item.description}</td>
         <td></td>
       </tr>
