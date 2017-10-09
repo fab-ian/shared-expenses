@@ -1,6 +1,6 @@
 import { API_URL } from '../settings'
 import axios from 'axios'
-import { ITEMS_TABLE, ITEM_ADD, ITEM_GET } from './types'
+import { ITEMS_TABLE, ITEM_ADD, ITEM_GET, ITEM_ERROR } from './types'
 
 export function items_table(){
   return function(dispatch){
@@ -16,9 +16,9 @@ export function items_table(){
   }
 }
 
-export function item_add(options){
+export function item_add({name, description}){
   return function(dispatch){
-    axios.post(`${API_URL}/users/items`, { name: options.name, description: options.description }, {
+    axios.post(`${API_URL}/users/items`, { name, description }, {
       headers:{authorization: localStorage.getItem('token')}
     })
     .then(response => {
@@ -27,6 +27,7 @@ export function item_add(options){
         payload: response.data
       })
     })
+    .catch(error => itemsError(error.response.data.message))
   }
 }
 
@@ -41,5 +42,12 @@ export function getItem(id) {
         }
       )
     })
+  }
+}
+
+export function itemsError(message){
+  return {
+    type: ITEM_ERROR,
+    payload: message
   }
 }
