@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../actions/items'
+import PaymentAdd from '../payments/payment_add'
+import PaymentList from '../payments/payment_list'
 
 class Item extends Component {
   componentWillMount(){
@@ -13,6 +15,10 @@ class Item extends Component {
         <div>
           <p>{this.props.item.name}</p>
           <p>{this.props.item.description}</p>
+          <hr />
+          <PaymentAdd itemId={this.props.item.id} />
+          <hr />
+          <PaymentList payments={this.props.item.payments} />
         </div>
       )
     }
