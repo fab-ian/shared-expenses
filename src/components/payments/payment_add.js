@@ -6,8 +6,6 @@ import { connect } from 'react-redux'
 class PaymentAdd extends Component {
 
   savePayment = options => {
-    // console.log(options)
-    // console.log(this.props.itemId)
     options.itemId = this.props.itemId
     this.props.addPayment(options)
   }
@@ -38,6 +36,7 @@ class PaymentAdd extends Component {
         <h3>Add Payment</h3>
         <form onSubmit={ handleSubmit(this.savePayment) } >
           <Field component={this.renderInputFields} name='name' type='text' label='Name' />
+          <Field component={this.renderInputFields} name='amount' type='text' label='Amount' />
           <Field component={this.renderTextAreaFields} name='description' type='text' label='Description' />
 
           <button type="submit" className='btn btn-primary'>Save</button>
