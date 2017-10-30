@@ -20,7 +20,7 @@ export function signinUser({ email, password }){
 
 export function signupUser({ email, password, name }){
   return function(dispatch){
-    axios.post(`${API_URL}/signup`, { email, password, name })
+    axios.post(`${API_URL}/signup`, { email, password, name, type: 'RegisteredUser' })
       .then(response => {
         dispatch({ type: AUTH_USER })
 
